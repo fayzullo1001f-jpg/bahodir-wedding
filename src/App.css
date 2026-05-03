@@ -1,38 +1,692 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Montserrat:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden; /* faqat yon scrollni yopadi */
+  background: linear-gradient(to bottom, #ffffff, #f8f5ef);
+  font-family: 'Montserrat', sans-serif;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to bottom, #ffffff, #f8f5ef);
+  color: #444;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* APP */
+.app {
+  max-width: 420px;
+  margin: 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* HERO */
+.hero {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 20px;
+}
+
+.hero_text {
+  width: 400px;
+  height: 600px;
+  border: 1px solid gold;
+  border-radius: 200px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  top: 20px;
+
+  box-shadow:
+          0 20px 40px rgba(0,0,0,0.15),
+          0 0 25px rgba(212,175,55,0.2);
+}
+
+
+.hero h1 {
+  font-family: 'Playfair Display';
+  font-size: 34px;
+  letter-spacing: 4px;
+  color: #b8962e;
+}
+
+.hero span {
+  font-size: 28px;
+  color: #d4af37;
+}
+.two{
+  width: 200px;
+  height: 250px;
+  border-radius: 100px 100px 0 0;
+
+}
+
+.hero_div {
+  width: 250px;
+  height: 250px;
+
+  background: url("./img/two.jpg") center/cover;
+  border: 2px solid #f1e4c8;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-radius: 50%;
+
+}
+.hero_text h1,
+.section h2,
+.footer h1 {
+  font-family: 'Playfair Display', serif;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.date {
+  color: #b8962e;
+
+}
+
+/* SECTION */
+.section {
+  margin: 20px;
+  padding: 30px 20px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #f1e4c8;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.section h2 {
+  font-family: 'Playfair Display';
+  color: #b8962e;
+  margin-bottom: 10px;
+}
+
+.section p {
+  color: #666;
+  line-height: 1.7;
+}
+/* CARD */
+.invitation {
+  background: #fff;
+  border: 1px solid #f1e4c8;
+  border-radius: 25px;
+  padding: 40px 20px;
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* TITLE */
+.inv_title {
+  font-family: 'Playfair Display';
+  color: #b8962e;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+/* TEXT */
+/* TEXT (qalinroq va premium) */
+.inv_text {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #444;
+  font-weight: 500; /* 👈 qalinroq */
+  letter-spacing: 0.2px;
+}
+
+/* DEFAULT SPAN STYLE (hamma spanlar uchun bazaviy) */
+.inv_text span {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 6px;
+
+  font-weight: 600;
+  color: #b8962e;
+
+
+
+  transition: 0.3s;
+}
+
+/* 🔥 SPECIAL GOLD SPAN (highlight effekt) */
+.inv_text span.gold {
+  color: #d4af37;
+
+
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
+}
+
+/* hover effect (ixtiyoriy, chiroy beradi) */
+.inv_text span:hover {
+  transform: scale(1.05);
+}
+
+/* GOLD SPAN */
+.gold {
+  color: #d4af37;
+  font-weight: 600;
+
+  text-shadow: 0 0 10px rgba(212,175,55,0.2);
+}
+
+/* IMAGE */
+.inv_img {
+  width: 220px;
+  margin: 20px 0;
+
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.inv_date {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400; /* DM Serif o‘zi allaqachon qalin */
+  color: #b8962e;
+
+  letter-spacing: 2px;
+  margin-top: 10px;
+  font-size: 22px;
+
+  display: inline-block;
+
+  text-shadow:
+          0 2px 6px rgba(0,0,0,0.2),
+          0 0 10px rgba(212,175,55,0.25);
+}
+
+/* SECTION */
+.calendar_section {
+  text-align: center;
+}
+
+/* TITLE */
+.cal_title {
+  font-family: 'Playfair Display', serif;
+  color: #b8962e;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+/* IMAGE */
+.cal_image {
+  width: 220px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* CARD */
+.calendar_card {
+  background: #fff;
+  border: 1px solid #f1e4c8;
+  border-radius: 20px;
+  padding: 20px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* HEADER */
+.cal_header {
+  font-family: 'Playfair Display', serif;
+  color: #b8962e;
+  font-size: 18px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+/* GRID */
+.cal_grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+/* DAY NAME */
+.cal_day_name {
+  font-size: 12px;
+  color: #999;
+  font-weight: 500;
+}
+
+/* NORMAL DAY */
+.cal_day {
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 13px;
+  color: #666;
+  transition: 0.3s;
+}
+
+/* ACTIVE DAY (27 AVGUST) */
+.active_day {
+  border-radius: 50%;
+  color:  #d4af37;
+
+
+  box-shadow:
+          0 0 12px rgba(212,175,55,0.4),
+          0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* hover effect */
+.cal_day:hover {
+  background: #faf3e0;
+  transform: scale(1.1);
+}
+
+/* ACTIVE DAY (premium upgrade) */
+
+
+/* small glow dot effect */
+
+/* container */
+.dates {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Inter', sans-serif;
+}
+/* TIMER */
+.timer {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 20px;
+  background: #faf3e0;
+  color: #b8962e;
+}
+
+/* CALENDAR */
+.cal-header {
+  color: #b8962e;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.cal-grid div {
+  padding: 8px;
+  border-radius: 50%;
+  color: #999;
+}
+
+.active {
+  background: #d4af37;
+  color: #fff;
+}
+
+/* BUTTON */
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #d4af37;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* IMAGES */
+img {
+  max-width: 100%;
+  border-radius: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.maps {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+}
+
+/* TIMELINE */
+.timeline {
+  margin-top: 15px;
+}
+
+.timeline_item {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.time_box {
+  color: #b8962e;
+  font-weight: bold;
+}
+
+/* FOOTER */
+.footer {
+  margin: 20px;
+  padding: 30px;
+  border-radius: 20px;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #f1e4c8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+}
+
+.footer h1 {
+  color: #b8962e;
+}
+
+.bride {
+  margin: 10px 0;
+}
+.grooms{
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+ }
+.groom_div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 55px;
+}
+/* SECTION */
+.countdown_section {
+  text-align: center;
+}
+
+/* CARD */
+.countdown_card {
+  margin-top: 20px;
+  padding: 25px 15px;
+
+  border-radius: 20px;
+
+  background: #fff;
+  border: 1px solid #f1e4c8;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* soft glow effect */
+.countdown_card::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+
+  background: rgba(212,175,55,0.15);
+  filter: blur(60px);
+
+  top: -50px;
+  left: -50px;
+}
+
+/* TEXT */
+.countdown_text {
+  font-size: 14px;
+  color: #999;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+/* CARD */
+.countdown_card {
+  background: #fff;
+  border: 1px solid #f1e4c8;
+  border-radius: 22px;
+
+  padding: 25px 15px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+  text-align: center;
+}
+
+/* TITLE */
+.countdown_title {
+  font-size: 13px;
+  color: #999;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+/* FLEX BOXES */
+.time_boxes {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+/* EACH BOX */
+.time_box_item {
+  flex: 1;
+
+  background: #faf3e0;
+  border: 1px solid #ead7a4;
+  border-radius: 15px;
+
+  padding: 15px 10px;
+
+  box-shadow: inset 0 0 10px rgba(212,175,55,0.08);
+
+  transition: 0.3s;
+}
+
+.time_box_item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(212,175,55,0.15);
+}
+
+/* NUMBER */
+.time_value {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #b8962e;
+  font-weight: 600;
+}
+
+/* LABEL */
+.time_label {
+  font-size: 12px;
+  color: #777;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+/* TIME */
+.countdown_time {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: #b8962e;
+
+  letter-spacing: 2px;
+
+  padding: 10px;
+  border-radius: 15px;
+
+  background: #faf3e0;
+  border: 1px solid #ead7a4;
+
+  box-shadow: inset 0 0 10px rgba(212,175,55,0.1);
+}
+.date_sec{
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+.timeline_section {
+  text-align: center;
+}
+
+/* TITLE */
+.timeline_title {
+  font-family: 'Playfair Display', serif;
+  color: #b8962e;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+/* BOX */
+.timeline_box {
+  position: relative;
+  padding-left: 20px;
+}
+
+/* VERTICAL LINE */
+.timeline_line {
+  position: absolute;
+  left: 18px;
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+  background: linear-gradient(#d4af37, #f5e6a3);
+  opacity: 0.5;
+}
+
+/* ITEM */
+.timeline_item {
+  display: flex;
+  align-items: flex-start;
+
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* DOT */
+.timeline_dot {
+  width: 10px;
+  height: 10px;
+  background: #d4af37;
+  border-radius: 50%;
+
+  margin-right: 15px;
+  margin-top: 5px;
+
+  box-shadow: 0 0 10px rgba(212,175,55,0.4);
+}
+
+/* CONTENT CARD */
+.timeline_content {
+  background: #fff;
+  border: 1px solid #f1e4c8;
+  border-radius: 15px;
+
+  padding: 10px 15px;
+
+  text-align: left;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+
+  transition: 0.3s;
+}
+
+.timeline_content:hover {
+  transform: translateX(5px);
+  box-shadow: 0 10px 25px rgba(212,175,55,0.15);
+}
+
+/* TIME */
+.timeline_time {
+  font-family: 'Playfair Display', serif;
+  color: #b8962e;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* TEXT */
+.timeline_text {
+  font-size: 13px;
+  color: #666;
+  margin-top: 3px;
+}
+.timeline_section {
+  text-align: center;
+}
+
+/* TITLE */
+.timeline_title {
+  font-family: 'Playfair Display', serif;
+  color: #b8962e;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+/* CARDS WRAP */
+.timeline_cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 12px;
+}
+
+/* CARD */
+.event_card {
+  min-width: 140px;
+  background: #fff;
+
+  border: 1px solid #f1e4c8;
+  border-radius: 18px;
+
+  padding: 15px 10px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+
+  scroll-snap-align: center;
+
+  transition: 0.3s;
+}
+
+.event_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(212,175,55,0.2);
+}
+
+/* TIME */
+.event_time {
+  font-family: 'Playfair Display', serif;
+  color: #b8962e;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* TEXT */
+.event_text {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+.ring {
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+
+  opacity: 0.9;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
