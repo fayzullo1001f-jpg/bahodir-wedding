@@ -15,7 +15,6 @@ import date from "./img/il_fullxfull.7003015888_burb.webp";
 import two from "./img/two.jpg";
 
 function App() {
-  const [timeLeft, setTimeLeft] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
 
   const audioRef = useRef(null);
@@ -47,7 +46,7 @@ function App() {
     return () => clearInterval(interval);
   }, [weddingDate]);
 
-  // 🎵 MUSIC TOGGLE (ADDED ONLY FIX)
+  // 🎵 MUSIC TOGGLE
   const toggleMusic = async () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -68,7 +67,7 @@ function App() {
   return (
       <div className="app">
 
-        {/* AUDIO (UNCHANGED STRUCTURE) */}
+        {/* AUDIO */}
         <audio ref={audioRef} loop>
           <source src={musicFile} type="audio/mp3" />
         </audio>
@@ -84,13 +83,12 @@ function App() {
 
             <p className="date">27 AVGUST 2026</p>
           </div>
-
-          {/* 🎵 ONLY MUSIC BUTTON ADDED LOGIC */}
-
         </section>
 
         {/* INVITATION */}
         <motion.section className="section invitation">
+
+          {/* 🎵 MUSIC BUTTON */}
           <div className="music_btn" onClick={toggleMusic}>
             <motion.img
                 src={isPlaying ? pause : play}
@@ -101,6 +99,7 @@ function App() {
                 transition={{ duration: 0.5 }}
             />
           </div>
+
           <h2 className="inv_title">TO‘Y TAKLIFNOMASI</h2>
 
           <p className="inv_text">
@@ -219,11 +218,8 @@ function App() {
               ["22:00","Tort kesish 🎂"]
             ].map(([time, text], i) => (
                 <div key={i} className="event_card">
-
                   <div className="event_time">{time}</div>
-
                   <div className="event_text">{text}</div>
-
                 </div>
             ))}
 
