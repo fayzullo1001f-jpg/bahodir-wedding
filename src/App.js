@@ -11,20 +11,23 @@ import restaurant from "./img/L_height.webp";
 
 import married from "./img/360_F_198831835_o8OtnyAyRIInLOWaPO410L0YuZOL4wLj.jpg";
 import groom from "./img/360_F_1342942305_I2u6JyECgnfLECvVzRTfqlcOX1nVA6hW.jpg";
-import date from "./img/il_fullxfull.7003015888_burb.webp"
-import two from "./img/two.jpg"
+import date from "./img/il_fullxfull.7003015888_burb.webp";
+import two from "./img/two.jpg";
 
 function App() {
   const [timeLeft, setTimeLeft] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
+
   const audioRef = useRef(null);
+
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
+
   // 💍 27 AVGUST 2026 18:00
   const weddingDate = useMemo(
-      () => new Date(2026, 7, 27, 18, 0, 0).getTime(), // 👈 AUGUST = 7
+      () => new Date(2026, 7, 27, 18, 0, 0).getTime(),
       []
   );
 
@@ -39,13 +42,13 @@ function App() {
       setHours(Math.floor((distance / (1000 * 60 * 60)) % 24));
       setMinutes(Math.floor((distance / (1000 * 60)) % 60));
       setSeconds(Math.floor((distance / 1000) % 60));
-
     }, 1000);
 
     return () => clearInterval(interval);
   }, [weddingDate]);
 
-  const toggleMusic = () => {
+  // 🎵 MUSIC TOGGLE (ADDED ONLY FIX)
+  const toggleMusic = async () => {
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -53,15 +56,19 @@ function App() {
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.play().catch(() => {});
-      setIsPlaying(true);
+      try {
+        await audio.play();
+        setIsPlaying(true);
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
 
   return (
       <div className="app">
 
-        {/* AUDIO */}
+        {/* AUDIO (UNCHANGED STRUCTURE) */}
         <audio ref={audioRef} loop>
           <source src={musicFile} type="audio/mp3" />
         </audio>
@@ -75,18 +82,25 @@ function App() {
 
             <div className="hero_div"></div>
 
-            {/* 💍 UPDATED DATE */}
             <p className="date">27 AVGUST 2026</p>
           </div>
 
-          <div className="music_btn" onClick={toggleMusic}>
-            <img src={isPlaying ? pause : play} alt="" className="music_icon"/>
-          </div>
+          {/* 🎵 ONLY MUSIC BUTTON ADDED LOGIC */}
+
         </section>
 
         {/* INVITATION */}
         <motion.section className="section invitation">
-
+          <div className="music_btn" onClick={toggleMusic}>
+            <motion.img
+                src={isPlaying ? pause : play}
+                alt="music"
+                className="music_icon"
+                whileTap={{ scale: 0.9 }}
+                animate={{ rotate: isPlaying ? 360 : 0 }}
+                transition={{ duration: 0.5 }}
+            />
+          </div>
           <h2 className="inv_title">TO‘Y TAKLIFNOMASI</h2>
 
           <p className="inv_text">
@@ -140,7 +154,10 @@ function App() {
         {/* COUNTDOWN */}
         <motion.section className="section countdown_section">
 
-          <h2 className="inv_title">TO‘YGACHA</h2>  <img className="date_sec" src={date} alt=""/>
+          <h2 className="inv_title">TO‘YGACHA</h2>
+
+          <img className="date_sec" src={date} alt=""/>
+
           <div className="time_boxes">
 
             <div className="time_box_item">
@@ -164,7 +181,6 @@ function App() {
             </div>
 
           </div>
-
 
         </motion.section>
 
@@ -213,9 +229,8 @@ function App() {
 
           </div>
 
-
-
         </section>
+
         {/* FOOTER */}
         <section className="footer">
           <h1>Bahodir & Mahliyo</h1>
