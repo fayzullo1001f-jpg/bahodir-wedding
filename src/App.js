@@ -8,7 +8,6 @@ import play from "./img/circle-play-regular-full.svg";
 import pause from "./img/circle-pause-regular-full.svg";
 
 import restaurant from "./img/L_height.webp";
-
 import married from "./img/360_F_198831835_o8OtnyAyRIInLOWaPO410L0YuZOL4wLj.jpg";
 import groom from "./img/360_F_1342942305_I2u6JyECgnfLECvVzRTfqlcOX1nVA6hW.jpg";
 import date from "./img/il_fullxfull.7003015888_burb.webp";
@@ -16,7 +15,6 @@ import two from "./img/two.jpg";
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
-
   const audioRef = useRef(null);
 
   const [days, setDays] = useState(0);
@@ -24,7 +22,6 @@ function App() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
 
-  // 💍 27 AVGUST 2026 18:00
   const weddingDate = useMemo(
       () => new Date(2026, 7, 27, 18, 0, 0).getTime(),
       []
@@ -46,7 +43,6 @@ function App() {
     return () => clearInterval(interval);
   }, [weddingDate]);
 
-  // 🎵 MUSIC TOGGLE
   const toggleMusic = async () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -74,21 +70,49 @@ function App() {
 
         {/* HERO */}
         <section className="hero">
-          <div className="hero_text">
-            <h1>Bahodir</h1>
-            <span>&</span>
-            <h1>Mahliyo</h1>
+          <motion.div
+              className="hero_text"
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1 }}
+          >
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+              Bahodir
+            </motion.h1>
 
-            <div className="hero_div"></div>
+            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
+              &
+            </motion.span>
 
-            <p className="date">27 AVGUST 2026</p>
-          </div>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}>
+              Mahliyo
+            </motion.h1>
+
+            <motion.div
+                className="hero_div"
+                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ delay: 1 }}
+            />
+
+            <motion.p
+                className="date"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+            >
+              27 AVGUST 2026
+            </motion.p>
+          </motion.div>
         </section>
 
         {/* INVITATION */}
-        <motion.section className="section invitation">
-
-          {/* 🎵 MUSIC BUTTON */}
+        <motion.section
+            className="section invitation"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+        >
           <div className="music_btn" onClick={toggleMusic}>
             <motion.img
                 src={isPlaying ? pause : play}
@@ -103,91 +127,104 @@ function App() {
           <h2 className="inv_title">TO‘Y TAKLIFNOMASI</h2>
 
           <p className="inv_text">
-            <span className="gold">Assalomu alaykum!</span> <br/>
-            Hurmatli mehmonimiz! <br/>
-            Sizni nikoh to‘yimiz munosabati bilan
-            bo‘lib o‘tadigan <span className="gold">"Visol oqshomi"</span>ga
-            taklif etamiz.
+            <span className="gold">Assalomu alaykum!</span><br />
+            Hurmatli mehmonimiz! <br />
+            Sizni nikoh to'yimiz munosabati bilan
+            bo'lib o'tadigan <span className="gold">"Visol oqshomi"</span>ga <br/>   taklif etamiz.
+
+
+
           </p>
 
-          <img className="inv_img" src={married} alt="" />
+          <motion.img
+              className="inv_img"
+              src={married}
+              alt=""
+              whileHover={{ scale: 1.05 }}
+          />
 
           <div className="dates">
             <h4 className="inv_date">27.08.2026</h4>
-            <h4 className="inv_date">Soat: 18:00</h4>
-            <h4 className="inv_date">Manzil: "Versal" to'yxonasi</h4>
+            <h4 className="inv_date">18:00</h4>
+            <h4 className="inv_date">"Versal" to'yxonasi</h4>
           </div>
-
         </motion.section>
 
         {/* CALENDAR */}
-        <section className="section calendar_section">
-
+        <motion.section
+            className="section calendar_section"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+        >
           <h2 className="cal_title">WEDDING DATE</h2>
 
-          <img className="cal_image" src={groom} alt="" />
+          <motion.img
+              className="cal_image"
+              src={groom}
+              alt=""
+              whileHover={{ scale: 1.05 }}
+          />
 
           <div className="calendar_card">
-
             <div className="cal_header">AUGUST 2026</div>
 
             <div className="cal_grid">
-
               {["Sha","Yak","Du","Se","Cho","Pa","Ju"].map(d => (
                   <div key={d} className="cal_day_name">{d}</div>
               ))}
 
               {Array.from({ length: 31 }, (_, i) => (
-                  <div
+                  <motion.div
                       key={i}
                       className={i + 1 === 27 ? "active_day" : "cal_day"}
+                      whileHover={{ scale: 1.2 }}
                   >
                     {i + 1}
-                  </div>
+                  </motion.div>
               ))}
-
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* COUNTDOWN */}
-        <motion.section className="section countdown_section">
-
+        <motion.section
+            className="section countdown_section"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+        >
           <h2 className="inv_title">TO‘YGACHA</h2>
 
           <img className="date_sec" src={date} alt=""/>
 
           <div className="time_boxes">
-
-            <div className="time_box_item">
-              <div className="time_value">{days}</div>
-              <div className="time_label">Kun</div>
-            </div>
-
-            <div className="time_box_item">
-              <div className="time_value">{hours}</div>
-              <div className="time_label">Soat</div>
-            </div>
-
-            <div className="time_box_item">
-              <div className="time_value">{minutes}</div>
-              <div className="time_label">Minut</div>
-            </div>
-
-            <div className="time_box_item">
-              <div className="time_value">{seconds}</div>
-              <div className="time_label">Sekund</div>
-            </div>
-
+            {[days, hours, minutes, seconds].map((val, i) => (
+                <motion.div
+                    key={i}
+                    className="time_box_item"
+                    whileHover={{ scale: 1.1 }}
+                >
+                  <div className="time_value">{val}</div>
+                  <div className="time_label">
+                    {["Kun","Soat","Minut","Sekund"][i]}
+                  </div>
+                </motion.div>
+            ))}
           </div>
-
         </motion.section>
 
         {/* LOCATION */}
-        <section className="section">
+        <motion.section
+            className="section"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+        >
           <h2>Versal to‘yxonasi</h2>
 
-          <img src={restaurant} alt="" className="restaurant" />
+          <motion.img
+              src={restaurant}
+              alt=""
+              whileHover={{ scale: 1.05 }}
+          />
 
           <iframe
               className="maps"
@@ -202,39 +239,52 @@ function App() {
           >
             Open Map
           </button>
-        </section>
+        </motion.section>
 
-        <section className="section timeline_section">
-
+        {/* TIMELINE */}
+        <motion.section
+            className="section timeline_section"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+        >
           <h2 className="timeline_title">TO‘Y DASTURI</h2>
 
           <div className="timeline_cards">
-
             {[
-              ["17:00","Mehmonlar kutib olish"],
+              ["17:00","Mehmonlar"],
               ["18:00","Boshlanish"],
-              ["19:00","Nikoh marosimi"],
+              ["19:00","Nikoh"],
               ["20:00","Dastur"],
-              ["22:00","Tort kesish 🎂"]
+              ["22:00","Tort 🎂"]
             ].map(([time, text], i) => (
-                <div key={i} className="event_card">
+                <motion.div
+                    key={i}
+                    className="event_card"
+                    whileHover={{ scale: 1.08 }}
+                >
                   <div className="event_time">{time}</div>
                   <div className="event_text">{text}</div>
-                </div>
+                </motion.div>
             ))}
-
           </div>
-
-        </section>
+        </motion.section>
 
         {/* FOOTER */}
-        <section className="footer">
+        <motion.section
+            className="footer"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+        >
           <h1>Bahodir & Mahliyo</h1>
 
-          <img src={two} className="two" alt="" />
+          <motion.img
+              src={two}
+              className="two"
+              whileHover={{ scale: 1.05 }}
+          />
 
           <p>Sizni kutamiz ❤️</p>
-        </section>
+        </motion.section>
 
       </div>
   );
