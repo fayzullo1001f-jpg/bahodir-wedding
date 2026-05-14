@@ -7,6 +7,9 @@ import musicFile from "./music/oshiq.m4a";
 import play from "./img/circle-play-regular-full.svg";
 import pause from "./img/circle-pause-regular-full.svg";
 
+import {  AnimatePresence } from "framer-motion";
+
+
 import restaurant from "./img/L_height.webp";
 import married from "./img/360_F_198831835_o8OtnyAyRIInLOWaPO410L0YuZOL4wLj.jpg";
 import groom from "./img/360_F_1342942305_I2u6JyECgnfLECvVzRTfqlcOX1nVA6hW.jpg";
@@ -16,6 +19,9 @@ import two from "./img/two.jpg";
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+
+const [showIntro, setShowIntro] = useState(true);
+
 
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
@@ -63,7 +69,60 @@ function App() {
   return (
       <div className="app">
 
-        {/* AUDIO */}
+          <AnimatePresence>
+              {showIntro && (
+                  <motion.div
+                      className="intro"
+                      initial={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1 }}
+                  >
+                      <motion.div
+                          className="intro_wrapper"
+                          initial={{ opacity: 0, scale: 0.9, y: 40 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          transition={{ duration: 1 }}
+                      >
+
+                          <div className="intro_top_glow"></div>
+
+                          <div className="intro_img_box">
+                              <div className="intro_img_border">
+                                  <div className="intro_ring"></div>
+                              </div>
+                          </div>
+
+                          <p className="intro_sub">
+                            To'yga Taklifnoma
+                          </p>
+
+                          <h1 className="intro_names">
+                              Bahodir <span>&</span> Mahliyo
+                          </h1>
+
+                          <div className="intro_line"></div>
+
+                          <p className="intro_date">
+                              27 • AUGUST • 2026
+                          </p>
+
+                          <motion.button
+                              className="enter_btn_new"
+                              whileHover={{ scale: 1.06 }}
+                              whileTap={{ scale: 0.95 }}
+                              onClick={() => setShowIntro(false)}
+                          >
+                              <span>Taklifnomani Oching</span>
+                          </motion.button>
+
+                      </motion.div>
+                  </motion.div>
+              )}
+          </AnimatePresence>
+
+
+
+          {/* AUDIO */}
         <audio ref={audioRef} loop>
           <source src={musicFile} type="audio/mp3" />
         </audio>
@@ -284,6 +343,9 @@ function App() {
           />
 
           <p>Sizni kutamiz ❤️</p>
+          <p>+998 99 999 99 99</p>
+
+
         </motion.section>
 
       </div>
