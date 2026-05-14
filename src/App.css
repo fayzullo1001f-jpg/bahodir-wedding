@@ -849,9 +849,6 @@ button:hover::after {
     transform: translateY(0);
   }
 }
-/* =========================
-   INTRO SCREEN
-========================= */
 
 .intro {
   position: fixed;
@@ -864,18 +861,14 @@ button:hover::after {
 
   overflow: hidden;
 
-  background:
-          radial-gradient(circle at top,
-          rgba(255,215,170,.25),
-          transparent 40%),
-
-          linear-gradient(
-                  180deg,
-                  #fffaf4 0%,
-                  #f8efe3 45%,
-                  #f5e7d5 100%
-          );
+  /* LIGHT + FAST background */
+  background: linear-gradient(
+          180deg,
+          #fffdfb 0%,
+          #fff3e6 100%
+  );
 }
+
 
 .intro::before,
 .intro::after {
